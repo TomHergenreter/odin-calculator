@@ -1,0 +1,34 @@
+body {
+    height: 100vh;
+}
+
+button {
+    display: block;
+    width: 40px;
+    height: 30px;
+}
+
+.flex-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    background-color: rgb(225, 247, 247);
+    padding: 15px;
+    display: grid;
+    gap: 10px;
+    grid-template-rows: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#display {
+    background-color: rgb(247, 255, 255);
+    grid-column-end: span 4;
+}
+
+#add {
+    grid-row-end: span 2;
+}
