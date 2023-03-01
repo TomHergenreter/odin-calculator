@@ -1,6 +1,17 @@
 //Calculator Project - The Odin Projecy
 //Tom Hergenreter 2023
 
+
+const dislpay = document.querySelector('#display p');
+const calculator = document.querySelector('#calculator');
+calculator.addEventListener('click',function(e){
+    console.log(e.target);
+    if(e.target.className === 'calc-button'){
+        dislpay.innerText = e.target.innerText
+    };
+    
+});
+
 function operate(num1, num2, operator){
 switch (operator) {
     case 'add': add(num1, num2);
