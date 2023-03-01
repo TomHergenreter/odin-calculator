@@ -2,9 +2,9 @@
 //Tom Hergenreter 2023
 
 const calculator = document.querySelector('#calculator');
-const display = document.querySelector('#display p');
+let displayText = document.querySelector('#displayText');
+displayText.innerText = 'what the fuck'
 calculator.addEventListener('click', handleClick);
-display.innerText = '43770';
 
 const memory = {
     numCache : '',
@@ -12,7 +12,7 @@ const memory = {
     num2 : '',
     operator : undefined,
     answer : '',
-    display : '',
+    display : ' ',
 };
 
 function handleClick(e){
@@ -20,22 +20,33 @@ function handleClick(e){
     const idName = e.target.id;
     if(className.contains('number')){
         memory.numCache += e.target.innerText;
-        updateDisplay();
+        updateDisplay('num1');
     }else if(className.contains('operator')){
         memory.operator = idName;
         memory.num1 = memory.numCache;
         memory.numCache = '';
-        updateDisplay();
+        updateDisplay('operator');
     }else if(idName === 'equals'){
         memory.num2 = memory.numCache;
         operate();
     }; 
-    display.innerText = memory.display;
     console.log(memory);
 }
 
-function updateDisplay(){
-
+function updateDisplay(type){
+    switch (type){
+        case 'num1':
+            memory.display = memory.numCache;
+            break;
+        case 'operator':
+            // memory.display =
+            break;
+        case 'results':
+            memory.display = memory.results;
+            break;
+    };
+    console.log(memory.display);
+    displayText.innerText = memory.display;
 }
 
 function operate(){
@@ -43,34 +54,18 @@ function operate(){
     num2 = parseFloat(memory.num2);
     switch (memory.operator) {
         case 'add': 
-            memory.answer = num1 + num2;
+            memory.results = num1 + num2;
             break;
         case 'subtract': 
-            memory.answer = num1 - num2;
+            memory.results = num1 - num2;
             break;
-        case 'multiply': multiply();
-            memory.answer = num1 * num2;
+        case 'multiply':
+            memory.results = num1 * num2;
             break;
         case 'divide': 
-            memory.answer = num1 / num2;
+            memory.results = num1 / num2;
             break;
     }
+    updateDisplay('results');
 }
 
-function add(){
-    console.log(memory.num1 + memory.num2)
-    memory.answer = memory.num1 + memory.num2;
-    return memory.num1 + memory.num2;
-}
-
-function subtract(){
-    return memory.num1 - memory.num2;
-}
-
-function multiply(){
-    return memory.num1 * memory.num2;
-}
-
-function divide(num1, num2){
-    return memory.num1 / memory.num2;
-}
