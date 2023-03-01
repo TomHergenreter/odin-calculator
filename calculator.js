@@ -1,47 +1,76 @@
 //Calculator Project - The Odin Projecy
 //Tom Hergenreter 2023
 
-
-const dislpay = document.querySelector('#display p');
 const calculator = document.querySelector('#calculator');
-calculator.addEventListener('click',function(e){
-    console.log(e.target);
-    if(e.target.className === 'calc-button'){
-        dislpay.innerText = e.target.innerText
-    };
-    
-});
+const display = document.querySelector('#display p');
+calculator.addEventListener('click', handleClick);
+display.innerText = '43770';
 
-function operate(num1, num2, operator){
-switch (operator) {
-    case 'add': add(num1, num2);
-    break;
-    case 'subtract': subtract(num1, num2);
-    break;
-    case 'multiply': multiply(num1, num2);
-    break;
-    case 'divide': divide(num1, num2);
-    break;
-}
+const memory = {
+    numCache : '',
+    num1 : '',
+    num2 : '',
+    operator : undefined,
+    answer : '',
+    display : '',
+};
+
+function handleClick(e){
+    const className = e.target.classList;
+    const idName = e.target.id;
+    if(className.contains('number')){
+        memory.numCache += e.target.innerText;
+        updateDisplay();
+    }else if(className.contains('operator')){
+        memory.operator = idName;
+        memory.num1 = memory.numCache;
+        memory.numCache = '';
+        updateDisplay();
+    }else if(idName === 'equals'){
+        memory.num2 = memory.numCache;
+        operate();
+    }; 
+    display.innerText = memory.display;
+    console.log(memory);
 }
 
-function add(num1, num2){
-    console.log(num1 + num2);
+function updateDisplay(){
+
 }
 
-function subtract(num1, num2){
-    console.log(num1 - num2);
+function operate(){
+    num1 = parseFloat(memory.num1);
+    num2 = parseFloat(memory.num2);
+    switch (memory.operator) {
+        case 'add': 
+            memory.answer = num1 + num2;
+            break;
+        case 'subtract': 
+            memory.answer = num1 - num2;
+            break;
+        case 'multiply': multiply();
+            memory.answer = num1 * num2;
+            break;
+        case 'divide': 
+            memory.answer = num1 / num2;
+            break;
+    }
 }
 
-function multiply(num1, num2){
-    console.log(num1 * num2);
+function add(){
+    console.log(memory.num1 + memory.num2)
+    memory.answer = memory.num1 + memory.num2;
+    return memory.num1 + memory.num2;
+}
+
+function subtract(){
+    return memory.num1 - memory.num2;
+}
+
+function multiply(){
+    return memory.num1 * memory.num2;
 }
 
 function divide(num1, num2){
-    console.log(num1 / num2);
+    return memory.num1 / memory.num2;
 }
-
-operate(2,2,'add')
-operate(2,2,'subtract')
-operate(2,2,'multiply')
-operate(2,2,'divide');
