@@ -3,7 +3,7 @@
 
 const calculator = document.querySelector('#calculator');
 let displayText = document.querySelector('#displayText');
-displayText.innerText = 'what the fuck'
+displayText.innerText = 'calc'
 calculator.addEventListener('click', handleClick);
 
 const memory = {
@@ -11,7 +11,7 @@ const memory = {
     num1 : '',
     num2 : '',
     operator : undefined,
-    answer : '',
+    answer : undefined,
     display : ' ',
 };
 
@@ -20,33 +20,29 @@ function handleClick(e){
     const idName = e.target.id;
     if(className.contains('number')){
         memory.numCache += e.target.innerText;
-        updateDisplay('num1');
+        updateDisplay('num');
     }else if(className.contains('operator')){
+        if(memory.num2) operate();
+        if(!memory.answer && memory.operator) operate();
         memory.operator = idName;
-        memory.num1 = memory.numCache;
-        memory.numCache = '';
-        updateDisplay('operator');
+        if(memory.answer){
+            memory.num1 = memory.answer;
+            memory.num2 = memory.numCache;
+            operate();
+        }else if(memory.num1){
+            memory.num2 = memory.numCache;
+            operate();
+        }else{
+            memory.num1 = memory.numCache;
+            memory.numCache = '';
+        };
+        // memory.numCache = '';    
     }else if(idName === 'equals'){
         memory.num2 = memory.numCache;
+        memory.numCache = '';
         operate();
     }; 
-    console.log(memory);
-}
-
-function updateDisplay(type){
-    switch (type){
-        case 'num1':
-            memory.display = memory.numCache;
-            break;
-        case 'operator':
-            // memory.display =
-            break;
-        case 'results':
-            memory.display = memory.results;
-            break;
-    };
-    console.log(memory.display);
-    displayText.innerText = memory.display;
+    console.table(memory);
 }
 
 function operate(){
@@ -54,18 +50,33 @@ function operate(){
     num2 = parseFloat(memory.num2);
     switch (memory.operator) {
         case 'add': 
-            memory.results = num1 + num2;
+            memory.answer = num1 + num2;
             break;
         case 'subtract': 
-            memory.results = num1 - num2;
+            memory.answer = num1 - num2;
             break;
         case 'multiply':
-            memory.results = num1 * num2;
+            memory.answer = num1 * num2;
             break;
         case 'divide': 
-            memory.results = num1 / num2;
+            memory.answer = num1 / num2;
             break;
     }
-    updateDisplay('results');
+    updateDisplay('answer');
+}
+
+function updateDisplay(type){
+    switch (type){
+        case 'num':
+            memory.display = memory.numCache;
+            break;
+        case 'answer':
+            memory.display = memory.answer;
+            memory.numCache = '';
+            memory.num1 = '';
+            memory.num2 = '';
+            break;
+    };
+    displayText.innerText = memory.display;
 }
 
