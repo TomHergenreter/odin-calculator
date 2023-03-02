@@ -3,7 +3,7 @@
 
 const calculator = document.querySelector('#calculator');
 let displayText = document.querySelector('#displayText');
-displayText.innerText = 'V 1.0'
+displayText.innerText = ''
 calculator.addEventListener('click', handleClick);
 
 const memory = {
@@ -28,7 +28,7 @@ function handleClick(e){
     }else if(className.contains('operator')){
         if(memory.answer){
             memory.num1 = memory.answer;
-            if(memory.cache){
+            if(memory.numCache){
                 memory.num2 = memory.numCache
                 operate();
             }
@@ -49,38 +49,18 @@ function handleClick(e){
             memory.num2 = memory.numCache;
         }
         operate();
-    }; 
+    }else if(idName === 'clear'){
+            memory.numCache = '';
+            memory.num1 = '';
+            memory.num2 = '';
+            memory.operator = undefined;
+            memory.answer = undefined;
+            updateDisplay('clear');
+    }else if(idName === 'on-button'){
+        updateDisplay('on');
+    } 
     console.table(memory);
 }
-
-// function handleClick(e){
-//     const className = e.target.classList;
-//     const idName = e.target.id;
-//     if(className.contains('number')){
-//         memory.numCache += e.target.innerText;
-//         updateDisplay('num');
-//     }else if(className.contains('operator')){
-//         if(memory.num2) operate();
-//         // if(!memory.answer && memory.operator) operate();
-//         memory.operator = idName;
-//         if(memory.answer){
-//             memory.num1 = memory.answer;
-//             memory.num2 = memory.numCache;
-//             operate();
-//         }else if(memory.num1){
-//             memory.num2 = memory.numCache;
-//             operate();
-//         }else{
-//             memory.num1 = memory.numCache;
-//             memory.numCache = '';
-//         };   
-//     }else if(idName === 'equals'){
-//         memory.num2 = memory.numCache;
-//         memory.numCache = '';
-//         operate();
-//     }; 
-//     console.table(memory);
-// }
 
 function operate(){
     num1 = parseFloat(memory.num1);
@@ -104,6 +84,9 @@ function operate(){
 
 function updateDisplay(type){
     switch (type){
+        case 'on':
+            memory.display = 'Hello!';
+            break;
         case 'num':
             memory.display = memory.numCache;
             break;
@@ -112,6 +95,9 @@ function updateDisplay(type){
             memory.numCache = '';
             memory.num1 = '';
             memory.num2 = '';
+            break;
+        case 'clear':
+            memory.display = '';
             break;
     };
     displayText.innerText = memory.display;

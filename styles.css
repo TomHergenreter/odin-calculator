@@ -20,7 +20,7 @@ button {
     padding: 15px;
     display: grid;
     gap: 10px;
-    grid-template-rows: 1.5fr 1fr 1fr 1fr;
+    grid-template-rows: 1.75fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
 }
@@ -30,6 +30,7 @@ button {
     background-color: rgb(247, 255, 255);
     grid-column-end: span 4;
     text-align: right;
+    min-height: 52px;
 }
 
 #add {
