@@ -20,7 +20,12 @@ function handleClick(e){
     const idName = e.target.id;
     let activeButton = calculator.querySelectorAll('.active-button');
     if(className.contains('number')){
-        memory.numCache += e.target.innerText;
+        console.log(memory.numCache.indexOf('.'), memory.numCache);
+        if (idName === 'decimal' && memory.numCache.indexOf('.') >= 0){
+            return;
+        }else{
+            memory.numCache += e.target.innerText;
+        };
         if(activeButton.length >= 1){
             activeButton.forEach(button => button.classList.remove('active-button'));
          }
@@ -63,7 +68,7 @@ function handleClick(e){
     }else if(idName === 'on-button'){
         updateDisplay('on');
     } 
-    console.table(memory);
+    // console.table(memory);
 }
 
 function operate(){

@@ -70,6 +70,7 @@ img {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.5);
 }
 
 #displayText {
@@ -84,13 +85,20 @@ button {
     width: 50px;
     padding: 0;
     font-size: 20px;
+    border: 1px solid black;
+    border-radius: 6px;
     box-shadow: 2px 2px rgba(0,0,0,.20),
-                inset 2px 2px rgba(255,255,255,.5)
+                inset 2px 2px rgba(255,255,255,.5),
+                0px 2px 2px rgba(0,0,0,.15)
     ;
 }
 
 #on-button {
-    background-color: #b86b7c;
+    background-color: #d48b9b;
+}
+
+#clear, #clear-entry {
+    background-color: #15a99f;
 }
 
 #add {
