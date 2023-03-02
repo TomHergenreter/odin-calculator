@@ -35,3 +35,7 @@ button {
 #add {
     grid-row-end: span 2;
 }
+
+.active-button {
+    color: red;
+}

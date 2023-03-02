@@ -3,7 +3,7 @@
 
 const calculator = document.querySelector('#calculator');
 let displayText = document.querySelector('#displayText');
-displayText.innerText = 'calc'
+displayText.innerText = 'V 1.0'
 calculator.addEventListener('click', handleClick);
 
 const memory = {
@@ -18,17 +18,20 @@ const memory = {
 function handleClick(e){
     const className = e.target.classList;
     const idName = e.target.id;
+    let activeButton = calculator.querySelectorAll('.active-button');
     if(className.contains('number')){
         memory.numCache += e.target.innerText;
+        if(activeButton.length >= 1){
+            activeButton.forEach(button => button.classList.remove('active-button'));
+         }
         updateDisplay('num');
     }else if(className.contains('operator')){
-        if(memory.num2) operate();
-        if(!memory.answer && memory.operator) operate();
-        memory.operator = idName;
         if(memory.answer){
             memory.num1 = memory.answer;
-            memory.num2 = memory.numCache;
-            operate();
+            if(memory.cache){
+                memory.num2 = memory.numCache
+                operate();
+            }
         }else if(memory.num1){
             memory.num2 = memory.numCache;
             operate();
@@ -36,14 +39,48 @@ function handleClick(e){
             memory.num1 = memory.numCache;
             memory.numCache = '';
         };
-        // memory.numCache = '';    
+        memory.operator = idName;
+        className.add('active-button');   
     }else if(idName === 'equals'){
-        memory.num2 = memory.numCache;
-        memory.numCache = '';
+        if(memory.answer){
+            memory.num1 = memory.answer;
+            memory.num2 = memory.numCache;
+        }else{
+            memory.num2 = memory.numCache;
+        }
         operate();
     }; 
     console.table(memory);
 }
+
+// function handleClick(e){
+//     const className = e.target.classList;
+//     const idName = e.target.id;
+//     if(className.contains('number')){
+//         memory.numCache += e.target.innerText;
+//         updateDisplay('num');
+//     }else if(className.contains('operator')){
+//         if(memory.num2) operate();
+//         // if(!memory.answer && memory.operator) operate();
+//         memory.operator = idName;
+//         if(memory.answer){
+//             memory.num1 = memory.answer;
+//             memory.num2 = memory.numCache;
+//             operate();
+//         }else if(memory.num1){
+//             memory.num2 = memory.numCache;
+//             operate();
+//         }else{
+//             memory.num1 = memory.numCache;
+//             memory.numCache = '';
+//         };   
+//     }else if(idName === 'equals'){
+//         memory.num2 = memory.numCache;
+//         memory.numCache = '';
+//         operate();
+//     }; 
+//     console.table(memory);
+// }
 
 function operate(){
     num1 = parseFloat(memory.num1);
