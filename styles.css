@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
 body {
     height: 100vh;
+    background-color: rgb(25, 25, 41);
 }
 
-button {
-    /* display: block; */
-    width: 40px;
-    /* height: 30px; */
+img {
+    display: block;
+    max-height: 28px;
 }
 
 .flex-wrapper {
@@ -16,13 +18,45 @@ button {
 }
 
 #calculator {
-    background-color: rgb(225, 247, 247);
-    padding: 15px;
+    background-color: rgb(230, 230, 230);
+    padding: 20px 14px;
     display: grid;
     gap: 10px;
-    grid-template-rows: 1.75fr 1fr 1fr 1fr;
+    grid-template-rows: .75fr 2.65fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
+    border-radius: 10px;
+    box-shadow: 2px 2px rgba(0,0,0,.20),
+                inset 2px 2px rgba(255,255,255,.5)
+    ;
+}
+
+#badge {
+    grid-column-start: span 2;
+    display: flex;
+    align-items: center;
+}
+
+#solar-power {
+    grid-column-end: span 2;
+    background-color: rgb(57, 31, 16);
+    display: grid;
+    padding: 0;
+    gap: 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-radius: 4px;
+}
+
+#solar-power > div {
+    border: .5px solid #47291b;
+}
+
+#solar-power > div:nth-child(1) {
+    border-radius: 3px 0 0 3px;
+}
+
+#solar-power > div:nth-child(4) {
+    border-radius: 0px 3px 3px 0px;
 }
 
 #display {
@@ -30,7 +64,23 @@ button {
     background-color: rgb(247, 255, 255);
     grid-column-end: span 4;
     text-align: right;
-    min-height: 52px;
+    min-height: 80px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#displayText {
+    margin: 0;
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Iceland', monospace;
+}
+
+button {
+    width: 50px;
 }
 
 #add {
