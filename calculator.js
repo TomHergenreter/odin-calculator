@@ -49,7 +49,11 @@ function handleClick(e){
             memory.num2 = memory.numCache;
         }
         operate();
-    }else if(idName === 'clear'){
+    }else if(idName === 'clear-entry'){
+        memory.numCache = '';
+        updateDisplay('clear')
+    }
+    else if(idName === 'clear'){
             memory.numCache = '';
             memory.num1 = '';
             memory.num2 = '';
