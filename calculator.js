@@ -20,7 +20,6 @@ function handleClick(e){
     const idName = e.target.id;
     let activeButton = calculator.querySelectorAll('.active-button');
     if(className.contains('number')){
-        console.log(memory.numCache.indexOf('.'), memory.numCache);
         if (idName === 'decimal' && memory.numCache.indexOf('.') >= 0){
             return;
         }else{
@@ -68,7 +67,7 @@ function handleClick(e){
     }else if(idName === 'on-button'){
         updateDisplay('on');
     } 
-    // console.table(memory);
+    console.table(memory);
 }
 
 function operate(){
@@ -85,6 +84,10 @@ function operate(){
             memory.answer = num1 * num2;
             break;
         case 'divide': 
+            if(num2 === 0){
+                updateDisplay('error')
+                return;
+            };
             memory.answer = num1 / num2;
             break;
     }
@@ -108,6 +111,12 @@ function updateDisplay(type){
         case 'clear':
             memory.display = '';
             break;
+        case 'error':
+            memory.display = '....haha'
+            memory.numCache = '';
+            memory.num1 = '';
+            memory.num2 = '';
+            memory.operator = '';
     };
     displayText.innerText = memory.display;
 }

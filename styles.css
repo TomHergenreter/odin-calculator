@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Iceland&family=Monoton&display=swap');
 
 body {
     height: 100vh;
-    background-color: rgb(25, 25, 41);
+    background-color: #6f6f7a;
 }
 
 img {
@@ -18,16 +18,17 @@ img {
 }
 
 #calculator {
-    background-color: rgb(230, 230, 230);
+    background-color: #dee0d9;
     padding: 20px 14px;
     display: grid;
     gap: 10px;
-    grid-template-rows: .75fr 2.65fr 1fr 1fr 1fr;
+    grid-template-rows: .75fr 2.65fr .1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
+    border: 2px solid rgba(0,0,0,.1);
     border-radius: 10px;
     box-shadow: 2px 2px rgba(0,0,0,.20),
-                inset 2px 2px rgba(255,255,255,.5)
+                inset 2px 2px rgba(255,255,255,.75)
     ;
 }
 
@@ -39,12 +40,13 @@ img {
 
 #solar-power {
     grid-column-end: span 2;
-    background-color: rgb(57, 31, 16);
+    background-color: rgb(62, 28, 16);
     display: grid;
     padding: 0;
     gap: 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     border-radius: 4px;
+    box-shadow: inset 0px 0px 5px black;
 }
 
 #solar-power > div {
@@ -61,11 +63,12 @@ img {
 
 #display {
     box-sizing: border-box;
-    background-color: rgb(127, 111, 91);
+    /* background-color: rgb(127, 111, 91); */
+    background-color: #cad5cd;
     grid-column-end: span 4;
     text-align: right;
     min-height: 80px;
-    margin: 10px 0;
+    margin-top: 10px;
     border-radius: 5px;
     display: flex;
     justify-content: flex-end;
@@ -81,24 +84,44 @@ img {
     line-height: 0;
 }
 
+#model-name {
+    font-family: 'Audiowide', monospace;
+    font-size: 8px;
+    padding-right: 1px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    grid-column-start: span 4;
+    max-height: 15px;
+}
+
+#model-name span {
+    font-family:'Monoton', monospace;
+    line-height: 10px;
+}
+
 button {
+    color: white;
+    background-color: #6c6d6f;
     width: 50px;
     padding: 0;
+    font-family: 'Audiowide', monospace;
     font-size: 20px;
-    border: 1px solid black;
-    border-radius: 6px;
-    box-shadow: 2px 2px rgba(0,0,0,.20),
-                inset 2px 2px rgba(255,255,255,.5),
-                0px 2px 2px rgba(0,0,0,.15)
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 4px;
+    box-shadow: 1px 1px rgba(0,0,0,.20),
+                inset 1px 1px rgba(255,255,255,.5),
+                0px 1px 4px rgba(0,0,0,.35)
     ;
 }
 
-#on-button {
-    background-color: #d48b9b;
+button:active {
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
-#clear, #clear-entry {
-    background-color: #15a99f;
+.red-button {
+background-color: #e3626d;
 }
 
 #add {
@@ -107,4 +130,8 @@ button {
 
 .active-button {
     color: red;
+}
+
+.operator {
+    background-color: #80a8ea;
 }
