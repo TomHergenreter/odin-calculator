@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Iceland&family=Monoton&display=swap');
 
 body {
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #6f6f7a;
 }
 
@@ -13,6 +13,7 @@ img {
 .flex-wrapper {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -129,13 +130,56 @@ button:active {
 }
 
 .red-button {
-background-color: #e3626d;
+background-color: #e32457;
 }
 
 #add {
     grid-row-end: span 2;
 }
 
+#multiply {
+    font-size: 16px;
+}
+
 .operator {
     background-color: #80a8ea;
+}
+
+@media screen and (max-width: 375px) {
+
+    html {
+        overflow: none;
+    }
+
+    .flex-wrapper {
+        justify-content: flex-start;
+    }
+
+    body {
+        padding: 0px;
+    }
+    
+    #calculator {
+        width: 100%;
+        height: 100%;
+        /* padding: 20px 60px; */
+    }
+
+    #display {
+        min-width: 0;
+    }
+
+    #displayText {
+        font-size: 50px;
+    }
+
+    button {
+        width: 100%;
+        min-height: 60px;
+        
+    }
+
+    #add {
+        min-height: 100%;
+    }
 }
