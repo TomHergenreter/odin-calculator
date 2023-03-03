@@ -103,7 +103,8 @@ function updateDisplay(type){
             memory.display = memory.numCache;
             break;
         case 'answer':
-            memory.display = memory.answer;
+            memory.display = Math.round(memory.answer * 100) / 100;
+            memory.answer;
             memory.numCache = '';
             memory.num1 = '';
             memory.num2 = '';
