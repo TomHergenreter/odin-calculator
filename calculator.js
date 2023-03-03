@@ -44,6 +44,9 @@ function handleClick(e){
             memory.numCache = '';
         };
         memory.operator = idName;
+        if(activeButton.length >= 1){
+            activeButton.forEach(button => button.classList.remove('active-button'));
+         }
         className.add('active-button');   
     }else if(idName === 'equals'){
         if(memory.answer){

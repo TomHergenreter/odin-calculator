@@ -4,6 +4,7 @@ html,
 body,
 #root {
   height: 100%;
+  margin: 0;
 }
 
 body {
@@ -20,7 +21,7 @@ img {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
 }
 
@@ -114,29 +115,28 @@ button {
     font-size: 24px;
     border: none;
     border-radius: 4px;
-    box-shadow: inset -2px -2px rgba(0,0,0,.30),
-                inset 2px 2px rgba(255,255,255,.5),
-                0px 2px 0px rgba(0,0,0,.15)
-    ;
+    box-shadow: 0px 3px 0px rgb(68, 69, 70);
+}
+
+.red-button {
+background-color: #e32457;
+box-shadow: 0px 3px 0px rgb(156, 24, 59);
+}
+
+.operator {
+    background-color: #80a8ea;
+    box-shadow: 0px 3px 0px #5773a1;
+}
+
+.active-button {
+    box-shadow: 1px 1px 9px rgb(73, 243, 255),
+    0px 3px 0px #5773a1;
 }
 
 button:active {
     transform: translateY(2px);
     box-shadow: none;
     box-shadow: inset 0px 0px 4px rgba(0,0,0, .3);
-}
-
-.active-button {
-    border: 1px solid rgba(167, 218, 255, 0.5);
-    box-shadow: 0px 0px 9px rgba(73, 191, 255, 0.9),
-                inset -2px -2px rgba(0,0,0,.30),
-                inset 2px 2px rgba(255,255,255,.5),
-                0px 2px 0px rgba(0,0,0,.15)
-    ;
-}
-
-.red-button {
-background-color: #e32457;
 }
 
 #add {
@@ -147,8 +147,44 @@ background-color: #e32457;
     font-size: 16px;
 }
 
-.operator {
-    background-color: #80a8ea;
+
+
+footer {
+    background-color: #41659f;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 100%;
+  }
+
+footer p {
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    margin: 9px 0px;
+    padding: 6px;
+    color: #f0f0f0;
+    font-size: 14px;
+  }
+
+  .link{
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    padding: 6px;
+    color: #f0f0f0;
+    font-size: 14px;
+}
+
+.link:visited {
+    color: #ebebeb;
+}
+
+.github {
+    display: inline-block;
+    margin: 5px;
+    height: 18px;
+    width: 18px;
+    vertical-align: -8px;
 }
 
 @media screen and (max-width: 390px) {
