@@ -125,3 +125,11 @@ function updateDisplay(type){
     displayText.innerText = memory.display;
 }
 
+//iPhone resize for address bar
+window.onresize = function() {
+    document.body.height = window.innerHeight;
+    console.log(document.body.height);
+}
+window.onresize(); // called to initially set the height.
+
+

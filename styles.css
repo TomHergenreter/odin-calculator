@@ -199,8 +199,8 @@ footer p {
 
     body {
         padding: 0px;
-        height: webkit-fill-available;
-        width: webkit-fill-availalbe;
+        height: 100%;
+        width: 100%;
     }
     
     #calculator {
