@@ -8,7 +8,6 @@ body,
 }
 
 body {
-    /* height: 100vh; */
     background-color: #6f6f7a;
 }
 
@@ -187,6 +186,7 @@ footer p {
     vertical-align: -8px;
 }
 
+/* Mobile Styles */
 @media screen and (max-width: 450px) {
 
     html {
@@ -206,7 +206,7 @@ footer p {
     #calculator {
         max-width: 100%;
         min-width: 95%;
-        /* height: 100%; */
+        height: 100svh;
         padding: 10px 10px 15px 10px;
         grid-template-rows: .75fr 1.8fr .1fr 1fr 1fr 1fr;
     }
