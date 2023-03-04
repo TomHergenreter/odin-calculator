@@ -187,7 +187,7 @@ footer p {
     vertical-align: -8px;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 450px) {
 
     html {
         overflow: none;
@@ -199,12 +199,14 @@ footer p {
 
     body {
         padding: 0px;
-        min-height: webkit-fill-available;
+        max-height: webkit-fill-available;
     }
     
     #calculator {
-        width: 100%;
+        max-width: 100%;
+        min-width: 95%;
         height: 100%;
+        padding: 10px 10px 15px 10px;
         grid-template-rows: .75fr 1.8fr .1fr 1fr 1fr 1fr;
     }
 
@@ -224,5 +226,16 @@ footer p {
 
     #add {
         min-height: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        margin-top: 0px;
+    }
+
+    footer p, footer a.link {
+        margin: 0;
+        font-size: 12px;
+        text-align: center;
     }
 }
