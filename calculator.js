@@ -127,9 +127,13 @@ function updateDisplay(type){
 
 //iPhone resize for address bar
 window.onresize = function() {
-    document.body.height = window.innerHeight;
-    console.log(document.body.height);
+    if(window.innerWidth < 450){
+        calculator.style.height = `${window.innerHeight}px`;
+        console.log(calculator.style.height);
+    }else{
+        calculator.style.height = 'auto';
+    }
 }
-window.onresize(); // called to initially set the height.
+window.onresize(); 
 
 
