@@ -25,6 +25,7 @@ img {
 }
 
 #calculator {
+    box-sizing: border-box;
     background-color: #dee0d9;
     padding: 20px 14px;
     display: grid;
