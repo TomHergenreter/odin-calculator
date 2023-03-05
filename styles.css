@@ -188,21 +188,16 @@ footer p {
 
 /* Mobile Styles */
 @media screen and (max-width: 450px) {
-
-    html {
-        overflow: hidden;
-    }
-
-    .flex-wrapper {
-        justify-content: flex-start;
-    }
-
     body {
         padding: 0px;
         height: 100%;
         width: 100%;
     }
-    
+
+    .flex-wrapper {
+        justify-content: flex-start;
+    }
+ 
     #calculator {
         max-width: 100%;
         min-width: 95%;

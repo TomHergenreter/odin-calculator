@@ -20,57 +20,77 @@ function handleClick(e){
     const idName = e.target.id;
     let activeButton = calculator.querySelectorAll('.active-button');
     if(className.contains('number')){
-        if (idName === 'decimal' && memory.numCache.indexOf('.') >= 0){
-            return;
-        }else{
-            memory.numCache += e.target.innerText;
-        };
-        if(activeButton.length >= 1){
-            activeButton.forEach(button => button.classList.remove('active-button'));
-         }
-        updateDisplay('num');
+        clickNumber(e, idName, activeButton);
     }else if(className.contains('operator')){
-        if(memory.answer){
-            memory.num1 = memory.answer;
-            if(memory.numCache){
-                memory.num2 = memory.numCache
-                operate();
-            }
-        }else if(memory.num1){
-            memory.num2 = memory.numCache;
-            operate();
-        }else{
-            memory.num1 = memory.numCache;
-            memory.numCache = '';
-        };
-        memory.operator = idName;
-        if(activeButton.length >= 1){
-            activeButton.forEach(button => button.classList.remove('active-button'));
-         }
-        className.add('active-button');   
+        clickOperator(className, idName, activeButton);  
     }else if(idName === 'equals'){
-        if(memory.answer){
-            memory.num1 = memory.answer;
-            memory.num2 = memory.numCache;
-        }else{
-            memory.num2 = memory.numCache;
-        }
-        operate();
+        clickEquals();
     }else if(idName === 'clear-entry'){
-        memory.numCache = '';
-        updateDisplay('clear')
+        clickClearEntry();
     }
     else if(idName === 'clear'){
-            memory.numCache = '';
-            memory.num1 = '';
-            memory.num2 = '';
-            memory.operator = undefined;
-            memory.answer = undefined;
-            updateDisplay('clear');
+            clickClear();
     }else if(idName === 'on-button'){
         updateDisplay('on');
     } 
-    console.table(memory);
+}
+
+function clickNumber(clickEvent, idName, activeButton) {
+    if (idName === 'decimal' && memory.numCache.indexOf('.') >= 0){
+        return;
+    }else{
+        memory.numCache += clickEvent.target.innerText;
+    };
+    if(activeButton.length >= 1){
+        activeButton.forEach(button => button.classList.remove('active-button'));
+        console.log('it works');
+     }
+    updateDisplay('num');  
+}
+
+function clickOperator(className, idName, activeButton){
+    if(memory.answer){
+        memory.num1 = memory.answer;
+        if(memory.numCache){
+            memory.num2 = memory.numCache
+            operate();
+        }
+    }else if(memory.num1){
+        memory.num2 = memory.numCache;
+        operate();
+    }else{
+        memory.num1 = memory.numCache;
+        memory.numCache = '';
+    };
+    memory.operator = idName;
+    if(activeButton.length >= 1){
+        activeButton.forEach(button => button.classList.remove('active-button'));
+     }
+    className.add('active-button');
+}
+
+function clickEquals() {
+    if(memory.answer){
+        memory.num1 = memory.answer;
+        memory.num2 = memory.numCache;
+    }else{
+        memory.num2 = memory.numCache;
+    }
+    operate();
+}
+
+function clickClear(){
+    memory.numCache = '';
+    updateDisplay('clear')
+}
+
+function clickClearEntry(){
+    memory.numCache = '';
+    memory.num1 = '';
+    memory.num2 = '';
+    memory.operator = undefined;
+    memory.answer = undefined;
+    updateDisplay('clear');
 }
 
 function operate(){
