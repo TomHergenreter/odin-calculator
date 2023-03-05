@@ -217,12 +217,10 @@ footer p {
     button {
         width: 100%;
         min-height: 40px;
-        max-height: 60px;
-        
     }
 
     #add {
-        min-height: 100%;
+        grid-row-end: span 2;
     }
 
     footer {
