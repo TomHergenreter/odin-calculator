@@ -8,7 +8,7 @@ body,
 }
 
 body {
-    background-color: #6f6f7a;
+    background-color: #78b2ce;
 }
 
 img {
@@ -149,7 +149,7 @@ button:active {
 
 
 footer {
-    background-color: #41659f;
+    background-color: #80a8ea;
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -190,7 +190,7 @@ footer p {
 @media screen and (max-width: 450px) {
     body {
         padding: 0px;
-        height: 100%;
+        height: 100svh;
         width: 100%;
     }
 
