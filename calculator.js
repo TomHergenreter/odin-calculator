@@ -20,6 +20,7 @@ function handleClick(e){
     const idName = e.target.id;
     let activeButton = calculator.querySelectorAll('.active-button');
     if(className.contains('number')){
+        if(memory.numCache.length >= 9) return; 
         clickNumber(e, idName, activeButton);
     }else if(className.contains('operator')){
         clickOperator(className, idName, activeButton);  
@@ -78,12 +79,12 @@ function clickEquals() {
     operate();
 }
 
-function clickClear(){
+function clickClearEntry(){
     memory.numCache = '';
     updateDisplay('clear')
 }
 
-function clickClearEntry(){
+function clickClear(){
     memory.numCache = '';
     memory.num1 = '';
     memory.num2 = '';
@@ -126,8 +127,9 @@ function updateDisplay(type){
             memory.display = memory.numCache;
             break;
         case 'answer':
-            memory.display = Math.round(memory.answer * 100) / 100;
-            memory.answer;
+            Math.round(memory.answer * 100) / 100;
+            if(memory.answer.toString().length >= 9) memory.answer = memory.answer.toExponential(2);
+            memory.display = memory.answer
             memory.numCache = '';
             memory.num1 = '';
             memory.num2 = '';
