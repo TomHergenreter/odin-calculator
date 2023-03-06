@@ -8,7 +8,7 @@ body,
 }
 
 body {
-    background-color: #78b2ce;
+    background-color: #edf2f4;
 }
 
 img {
@@ -26,7 +26,7 @@ img {
 
 #calculator {
     box-sizing: border-box;
-    background-color: #dee0d9;
+    background-color: #d8dadf;
     padding: 20px 14px;
     display: grid;
     gap: 12px;
@@ -35,7 +35,7 @@ img {
     grid-auto-rows: 1fr;
     border-radius: 10px;
     box-shadow: inset -2px -2px rgba(0,0,0,.20),
-                inset 2px 2px rgba(255,255,255,.75),
+                inset 2px 2px rgba(255,255,255,.45),
                 4px 4px 15px rgba(0,0,0,.20)
     ;
 }
@@ -71,7 +71,7 @@ img {
 
 #display {
     box-sizing: border-box;
-    background-color: #cad5cd;
+    background-color: #d5dde3;
     grid-column-end: span 4;
     text-align: right;
     min-height: 80px;
@@ -134,7 +134,7 @@ box-shadow: 0px 3px 0px rgb(156, 24, 59);
 }
 
 button:active {
-    transform: translateY(2px);
+    transform: translateY(4px);
     box-shadow: none;
     box-shadow: inset 0px 0px 4px rgba(0,0,0, .3);
 }
@@ -150,7 +150,7 @@ button:active {
 
 
 footer {
-    background-color: #80a8ea;
+    background-color: #2b2d42;
     display: flex;
     justify-content: center;
     margin: 0 auto;
