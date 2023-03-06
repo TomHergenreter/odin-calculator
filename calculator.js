@@ -113,7 +113,8 @@ function operate(){
             memory.answer = num1 / num2;
             break;
     }
-    updateDisplay('answer');
+    console.table(memory);
+    memory.answer === undefined ? updateDisplay('error') : updateDisplay('answer');
 }
 
 function updateDisplay(type){
@@ -135,7 +136,7 @@ function updateDisplay(type){
             memory.display = '';
             break;
         case 'error':
-            memory.display = '....haha'
+            memory.display = 'error'
             memory.numCache = '';
             memory.num1 = '';
             memory.num2 = '';
