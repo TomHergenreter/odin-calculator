@@ -43,7 +43,6 @@ function clickNumber(clickEvent, idName, activeButton) {
     };
     if(activeButton.length >= 1){
         activeButton.forEach(button => button.classList.remove('active-button'));
-        console.log('it works');
      }
     updateDisplay('num');  
 }
@@ -145,13 +144,35 @@ function updateDisplay(type){
     displayText.innerText = memory.display;
 }
 
-//iPhone resize for address bar
-// window.onload = function() {
-//     if(window.innerWidth < 450){
-//         calculator.style.height = (window.innerHeight - 75) + 'px';
-//         console.log(calculator.style.height);
-//     }
-// }
-// window.onload(); 
 
+document.addEventListener('keydown', (event) => {
+    var key = event.key;
+    if (key === '/') event.preventDefault();
+    console.log(key);
+    if(/[0-9]/.test(key)){
+        let numberButton = document.getElementById(`${key}`);
+        numberButton.click();
+    }else if(/\=|\+|\-|\*|\//.test(key)){
+        let operatorName;
+        switch (key){
+            case '+':
+                operatorName = 'add';
+                break;
+            case '-':
+                operatorName = 'subtract';
+                break;
+            case '*':
+                operatorName = 'multiply';
+                break;
+            case '/':
+                operatorName = 'divide';
+                break;
+            case '=':
+                operatorName = 'equals';
+                break;
+        }
+            let operatorButton = document.getElementById(`${operatorName}`)
+            operatorButton.click();
+    };
+  }, false);
 
