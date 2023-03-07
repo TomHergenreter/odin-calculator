@@ -13,6 +13,7 @@ const memory = {
     operator : undefined,
     answer : undefined,
     display : ' ',
+    isComplete : false,
 };
 
 function handleClick(e){
@@ -37,6 +38,10 @@ function handleClick(e){
 }
 
 function clickNumber(clickEvent, idName, activeButton) {
+    if(memory.isComplete) {
+        memory.answer = undefined;
+        memory.isComplete = false;
+    }
     if (idName === 'decimal' && memory.numCache.indexOf('.') >= 0){
         return;
     }else{
@@ -77,6 +82,7 @@ function clickEquals() {
         memory.num2 = memory.numCache;
     }
     operate();
+    memory.isComplete = true;
 }
 
 function clickClearEntry(){
